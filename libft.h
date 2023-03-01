@@ -6,7 +6,7 @@
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:19:15 by kali              #+#    #+#             */
-/*   Updated: 2023/03/01 14:27:20 by kali             ###   ########.fr       */
+/*   Updated: 2023/03/01 16:24:08 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ int	ft_strlen(const char *s);
 char	*ft_strrchr(const char *s, int c);
 int	ft_tolower(int c);
 int	ft_toupper(int c);
+void *ft_memchr(const void *s, int c, size_t n);
+int strncmp(const char *s1, const char *s2, size_t n);
 #endif
