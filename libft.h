@@ -6,13 +6,14 @@
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:19:15 by kali              #+#    #+#             */
-/*   Updated: 2023/03/01 16:24:08 by kali             ###   ########.fr       */
+/*   Updated: 2023/03/02 08:22:45 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdlib.h>
 void	ft_bzero(void *s, size_t n);
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);

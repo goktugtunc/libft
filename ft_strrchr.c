@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 16:00:53 by kali              #+#    #+#             */
-/*   Updated: 2023/03/01 16:18:30 by kali             ###   ########.fr       */
+/*   Created: 2023/03/01 06:21:36 by kali              #+#    #+#             */
+/*   Updated: 2023/03/02 17:55:52 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *deneme(char *s, int c, int n)
+#include "libft.h"
+
+char *ft_strrchr(const char *s, int c)
 {
+        int     sayac;
         int     i;
+        int     endmatch;
 
         i = 0;
-        while (s[i] != '\0' && i < n)
+        endmatch = 0;
+        sayac = 0;
+        while (s[i] != '\0')
         {
                 if (s[i] == c)
-                        return (s + i);
+                        sayac++;
+                i++;
+        }
+        i = 0;
+        while (s[i] != '\0')
+        {
+                if (s[i] == c)
+                        endmatch++;
+                if ((sayac == endmatch) && sayac != 0)
+                        return ((char *)s + i);
                 i++;
         }
         return (NULL);
-}
-
-void *ft_memchr(const void *s, int c, size_t n)
-{
-        char	*a;
-
-        a = deneme(s, c, n);
-        return (a);
 }

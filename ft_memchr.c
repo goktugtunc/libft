@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 15:49:11 by kali              #+#    #+#             */
-/*   Updated: 2023/03/01 14:08:42 by kali             ###   ########.fr       */
+/*   Created: 2023/03/01 16:00:53 by kali              #+#    #+#             */
+/*   Updated: 2023/03/02 17:54:27 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_bzero(void *s, size_t n)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (i < n)
-	{
-		s[i] = '\0';
-		i++;
-	}
+void *ft_memchr(const void *s, int c, size_t n)
+{
+        long unsigned int     i;
+
+        i = 0;
+        while (s + i != '\0' && i < n)
+        {
+                if (s + i == c)
+                        return (m + i);
+                i++;
+        }
+        return (NULL);
 }

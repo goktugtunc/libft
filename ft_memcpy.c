@@ -6,9 +6,11 @@
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:13:25 by kali              #+#    #+#             */
-/*   Updated: 2023/03/01 14:09:51 by kali             ###   ########.fr       */
+/*   Updated: 2023/03/02 17:54:39 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void *ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
 {
