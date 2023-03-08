@@ -1,27 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 15:49:11 by kali              #+#    #+#             */
-/*   Updated: 2023/03/04 17:42:14 by kali             ###   ########.fr       */
+/*   Created: 2023/03/08 16:42:47 by kali              #+#    #+#             */
+/*   Updated: 2023/03/08 16:58:40 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	ft_bzero(void *s, size_t n)
+int	deneme(char *title)
 {
-	long unsigned int	i;
-	unsigned char		*src;
+	int	i;
 
-	src = (unsigned char *)s;
 	i = 0;
-	while (i < n)
+	while (title[i])
+		i++;
+	return (i);
+}
+
+size_t	strlcat(char *destination, const char *source, size_t size)
+{
+	size_t	i;
+	int	d;
+	char	*src;
+
+	src = (char *)source;
+	d = deneme(destination);
+	i = 0;
+	while (destination[i] && i < size)
 	{
-		src[i] = 0;
+		write(1, &destination[i], 1);
 		i++;
 	}
+	i = 0;
+	while (src[i] && i < size)
+	{
+		write(1, &src[i], 1);
+		i++;
+	}
+	return (d + size);
 }

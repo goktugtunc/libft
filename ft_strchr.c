@@ -6,13 +6,13 @@
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 06:04:38 by kali              #+#    #+#             */
-/*   Updated: 2023/03/02 17:55:06 by kali             ###   ########.fr       */
+/*   Updated: 2023/03/08 15:42:25 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
@@ -23,5 +23,5 @@ char *ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

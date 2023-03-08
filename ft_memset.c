@@ -5,22 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 15:34:03 by kali              #+#    #+#             */
-/*   Updated: 2023/03/02 17:54:53 by kali             ###   ########.fr       */
+/*   Created: 2023/03/08 16:32:23 by kali              #+#    #+#             */
+/*   Updated: 2023/03/08 16:35:56 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	long unsigned int	i;
+	size_t			i;
 
+	if (!b)
+		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		s + i = c;
+		*(unsigned char *)(b + i) = (unsigned char) c;
 		i++;
 	}
-	return (s);
+	return (b);
 }
