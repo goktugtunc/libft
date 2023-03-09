@@ -14,6 +14,7 @@ SRCS	=	ft_isalpha.c	\
 		ft_memset.c	\
 		ft_memcpy.c	\
 		ft_strlcat.c	\
+		ft_atoi.c	\
 
 OBJS	= ${SRCS:.c=.o}
 NAME	= libft.a
