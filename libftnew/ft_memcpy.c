@@ -6,13 +6,13 @@
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:03:12 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 11:20:04 by gotunc           ###   ########.fr       */
+/*   Updated: 2023/07/06 01:10:35 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*source;
 	char	*dest;
