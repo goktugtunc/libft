@@ -3,39 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 15:57:22 by kali              #+#    #+#             */
-/*   Updated: 2023/03/08 16:54:21 by kali             ###   ########.fr       */
+/*   Created: 2023/07/05 12:16:11 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/06 01:11:18 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlenn(char *title)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	x;
+	char			*dest;
+	char			*source;
 
+	x = ft_strlen(src);
 	i = 0;
-	while (title[i])
-		i++;
-	return (i);
-}
-
-size_t	strlcpy(char *destination, const char *source, size_t size)
-{
-	char	*src;
-	size_t	d;
-	size_t	i;
-
-	src = (char *)source;
-	d = ft_strlenn(destination);
-	i = 0;
-	while (i < size)
+	dest = (char *)dst;
+	source = (char *)src;
+	if (dstsize != 0)
 	{
-		destination[d + i] = src[i];
-		i++;
+		while (source [i] != '\0' && i < dstsize - 1)
+		{
+			dest[i] = source[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	destination[d + i] = 0;
-	return (d);
+	return (x);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 06:21:36 by kali              #+#    #+#             */
-/*   Updated: 2023/03/04 17:48:27 by kali             ###   ########.fr       */
+/*   Created: 2023/07/05 00:06:39 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/06 21:41:02 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,22 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	sayac;
-	int	i;
-	int	endmatch;
+	size_t			i;
+	int				res;
+	unsigned char	*title;
+	unsigned char	d;
 
+	d = c;
+	title = (unsigned char *)s;
 	i = 0;
-	endmatch = 0;
-	sayac = 0;
-	while (s[i] != '\0')
+	res = -1;
+	while (i != (ft_strlen((char *)title) + 1))
 	{
-		if (s[i] == c)
-			sayac++;
+		if (title[i] == d)
+			res = i;
 		i++;
 	}
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			endmatch++;
-		if ((sayac == endmatch) && sayac != 0)
-			return ((char *)s + i);
-		i++;
-	}
-	return (NULL);
+	if (res != -1)
+		return ((char *)(s + (res * sizeof(char))));
+	return (0);
 }

@@ -3,45 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 16:42:47 by kali              #+#    #+#             */
-/*   Updated: 2023/03/08 16:58:40 by kali             ###   ########.fr       */
+/*   Created: 2023/07/05 15:19:44 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/06 01:11:55 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-int	deneme(char *title)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	dlen;
+	unsigned int	slen;
 
 	i = 0;
-	while (title[i])
-		i++;
-	return (i);
-}
-
-size_t	strlcat(char *destination, const char *source, size_t size)
-{
-	size_t	i;
-	int	d;
-	char	*src;
-
-	src = (char *)source;
-	d = deneme(destination);
-	i = 0;
-	while (destination[i] && i < size)
+	j = 0;
+	while (dst[j] != '\0')
 	{
-		write(1, &destination[i], 1);
-		i++;
+		j++;
 	}
-	i = 0;
-	while (src[i] && i < size)
+	dlen = j;
+	slen = ft_strlen(src);
+	if (dstsize == 0 || dstsize <= dlen)
+		return (slen + dstsize);
+	while (src [i] != '\0' && i < dstsize - dlen - 1)
 	{
-		write(1, &src[i], 1);
+		dst[j] = src[i];
 		i++;
+		j++;
 	}
-	return (d + size);
+	dst[j] = '\0';
+	return (dlen + slen);
 }

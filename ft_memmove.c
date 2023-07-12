@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 00:03:06 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:30 by gotunc           ###   ########.fr       */
+/*   Created: 2023/07/05 11:21:52 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/11 19:31:28 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stdio.h"
 #include "libft.h"
 
-int	ft_isprint(int c)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (c >= 32 && c < 127)
+	size_t	i;
+	char	*source;
+	char	*dest;
+
+	dest = (char *)dst;
+	source = (char *)src;
+	if (dst == 0 && src == 0)
+		return (NULL);
+	i = 0;
+	if (dest > source)
 	{
-		return (1);
+		while (len-- > 0)
+		{
+			dest[len] = source[len];
+		}
 	}
-	return (0);
+	else
+	{
+		while (i < len)
+		{
+			dest[i] = source[i];
+			i++;
+		}
+	}
+	return (dest);
 }

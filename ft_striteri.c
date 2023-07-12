@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 00:03:06 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:30 by gotunc           ###   ########.fr       */
+/*   Created: 2023/07/10 15:34:36 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/11 18:21:48 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (c >= 32 && c < 127)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		return (1);
+		f(i, &s[i]);
+		i++;
 	}
-	return (0);
 }

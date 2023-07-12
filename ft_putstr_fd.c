@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 00:03:06 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:30 by gotunc           ###   ########.fr       */
+/*   Created: 2023/07/10 16:11:45 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/11 18:20:32 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (c >= 32 && c < 127)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		return (1);
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (0);
 }

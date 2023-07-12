@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 00:03:06 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:30 by gotunc           ###   ########.fr       */
+/*   Created: 2023/07/12 00:27:39 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/12 00:27:41 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (c >= 32 && c < 127)
-	{
-		return (1);
-	}
-	return (0);
+	size_t	i;
+
+	if (!s1 || !set)
+		return (0);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

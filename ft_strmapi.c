@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 00:03:06 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:30 by gotunc           ###   ########.fr       */
+/*   Created: 2023/07/10 15:13:21 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/11 18:23:44 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (c >= 32 && c < 127)
+	char			*d;
+	char			*m;
+	unsigned int	i;
+
+	m = (char *)s;
+	d = (char *)malloc(sizeof(char) * (ft_strlen(m) + 1));
+	i = 0;
+	if (!d)
+		return (NULL);
+	while (m[i] && m)
 	{
-		return (1);
+		d[i] = f(i, (char)m[i]);
+		i++;
 	}
-	return (0);
+	d[i] = '\0';
+	return (d);
 }

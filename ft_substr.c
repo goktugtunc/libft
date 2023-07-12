@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 00:03:06 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 00:03:30 by gotunc           ###   ########.fr       */
+/*   Created: 2023/07/07 13:52:47 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/11 18:26:16 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (c >= 32 && c < 127)
-	{
-		return (1);
-	}
-	return (0);
+	char	*rtn;
+	size_t	i;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	i = 0;
+	rtn = ft_calloc(len + 1, sizeof(char));
+	if (!rtn)
+		return (NULL);
+	rtn[len] = 0;
+	while (i < len)
+		rtn[i++] = s[start++];
+	return (rtn);
 }

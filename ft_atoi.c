@@ -3,35 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 08:19:47 by kali              #+#    #+#             */
-/*   Updated: 2023/03/09 09:13:08 by kali             ###   ########.fr       */
+/*   Created: 2023/07/05 08:59:55 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/05 11:01:04 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	atoi(const char *nptr)
-{
-	int	ft_symbol;
-	int	number;
-	int	i;
-	char	*title;
+#include "libft.h"
 
-	i = 0;
-	number = 0;
-	ft_symbol = 1;
-	title = (char *)nptr;
-	while (title[i])
+int	posorneg(char *str)
+{
+	int	l;
+	int	c;
+	int	s;
+
+	l = 0;
+	c = 0;
+	s = 1;
+	while (str[c] == '+' || str[c] == '-')
 	{
-		if (title[i] == '-')
-			ft_symbol = -1;
-		while (title[i] >= '0' && title[i] <= '9')
-		{
-			number = (number * 10) + (title[i] - 48);
-			if (!(title[i + 1] >= '0' && title[i + 1] <= '9'))
-				return (number * ft_symbol);
-			i++;
-		}
+		if (str[c] == '-' && ft_isdigit(str[c + 1]) == 1)
+			s = -1;
+		l++;
+		if (l != 1)
+			s = 0;
+		c++;
 	}
-	return (0);
+	return (s);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	c;
+	int	s;
+	int	res;
+	int	l;
+
+	c = 0;
+	s = 1;
+	res = 0;
+	l = 0;
+	while ((str[c] >= '\t' && str[c] <= '\r') || str[c] == ' ')
+		c++;
+	s = posorneg((char *)str + c);
+	while (str[c] == '+' || str[c] == '-')
+		c++;
+	while (str[c] >= '0' && str[c] <= '9')
+	{
+		res = (str[c] - '0') + (res * 10);
+		c++;
+	}
+	return (res * s);
 }

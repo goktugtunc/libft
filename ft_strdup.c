@@ -3,41 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 15:14:37 by kali              #+#    #+#             */
-/*   Updated: 2023/03/08 17:08:43 by kali             ###   ########.fr       */
+/*   Created: 2023/07/06 01:23:06 by gotunc            #+#    #+#             */
+/*   Updated: 2023/07/06 03:07:20 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_strlenn(char *title)
+char	*ft_strdup(const char *s1)
 {
-	int	i;
+	int		i;
+	char	*d;
+	char	*m;
 
 	i = 0;
-	while (title[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*dest;
-	char	*src;
-	int	i;
-	int	c;
-
-	i = 0;
-	src = (char *)s;
-	c = ft_strlenn(src);
-	dest = (char *) malloc (c * sizeof(char));
-	while (src[i] != '\0')
+	m = (char *)s1;
+	d = (char *)malloc(sizeof(char) * ft_strlen(m) + 1);
+	if (!d)
+		return (0);
+	while (m[i])
 	{
-		dest[i] = src[i];
+		d[i] = m[i];
 		i++;
 	}
-	return (dest);
+	d[i] = 0;
+	return (d);
 }
