@@ -3,56 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gotunc <gotunc@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:59:55 by gotunc            #+#    #+#             */
-/*   Updated: 2023/07/05 11:01:04 by gotunc           ###   ########.fr       */
+/*   Updated: 2023/08/01 01:15:56 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	posorneg(char *str)
-{
-	int	l;
-	int	c;
-	int	s;
-
-	l = 0;
-	c = 0;
-	s = 1;
-	while (str[c] == '+' || str[c] == '-')
-	{
-		if (str[c] == '-' && ft_isdigit(str[c + 1]) == 1)
-			s = -1;
-		l++;
-		if (l != 1)
-			s = 0;
-		c++;
-	}
-	return (s);
-}
-
 int	ft_atoi(const char *str)
 {
-	int	c;
-	int	s;
-	int	res;
-	int	l;
+	long	i;
+	long	nbr;
+	int		isneg;
 
-	c = 0;
-	s = 1;
-	res = 0;
-	l = 0;
-	while ((str[c] >= '\t' && str[c] <= '\r') || str[c] == ' ')
-		c++;
-	s = posorneg((char *)str + c);
-	while (str[c] == '+' || str[c] == '-')
-		c++;
-	while (str[c] >= '0' && str[c] <= '9')
+	i = 0;
+	nbr = 0;
+	isneg = 0;
+	while (str[i] != '\0' && (str[i] == 32 || str[i] == '\t' || str[i] == '\n'
+			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
+		i++;
+	if (str[i] != '\0' && str[i] == '-')
 	{
-		res = (str[c] - '0') + (res * 10);
-		c++;
+		isneg = 1;
+		i++;
 	}
-	return (res * s);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] != '\0' && ft_isdigit(str[i]))
+		nbr = (nbr * 10) + (str[i++] - '0');
+	if (isneg == 1)
+		return (-nbr);
+	return (nbr);
 }
